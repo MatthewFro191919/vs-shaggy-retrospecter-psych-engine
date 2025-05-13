@@ -15,7 +15,7 @@ echo This might take a few moments depending on your internet speed.
           haxelib remove flixel-ui
           haxelib install flixel-tools
           haxelib install flixel-ui
-          haxelib install flixel-addons 2.9.0
+          haxelib install flixel-addons 3.2.0
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec 2.5.1
