@@ -17,7 +17,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxCamera;
 import Shaders;
 import objects.Character;
-import options,OptionsState;
+import options.OptionsState;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import haxe.DynamicAccess;
