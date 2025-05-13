@@ -1,14 +1,14 @@
 {
 	"animations": [
 		{
-			"loop": false,
+			"loop": true,
 			"offsets": [
-				-5,
+				-4,
 				0
 			],
 			"anim": "idle",
 			"fps": 24,
-			"name": "BF idle dance",
+			"name": "BF idle shaking",
 			"indices": []
 		},
 		{
