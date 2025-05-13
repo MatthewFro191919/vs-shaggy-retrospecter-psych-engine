@@ -16,9 +16,6 @@ class GodEaterBG extends BaseStage
 		Cache.Clear();
 		modchart = new ModChart(this);
 
-		switch (SONG.song.toLowerCase())
-		{
-			case 'god-eater':
 				defaultCamZoom = 0.65;
 				curStage = 'sky';
 
@@ -100,7 +97,6 @@ class GodEaterBG extends BaseStage
 				rock.scrollFactor.set(1, 1);
 				rock.antialiasing = true;
 				add(rock);
-		}
 	}
 	public function godIntro() // STOLEN STRAIGHT FROM https://github.com/GithubSPerez/the-shaggy-mod/blob/main/source/PlayState.hx
 	{
