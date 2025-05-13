@@ -284,4 +284,5 @@ class GodEaterBG extends BaseStage
 						gf_rock.alpha = 0;
 					}
 		}
+	}
 }
