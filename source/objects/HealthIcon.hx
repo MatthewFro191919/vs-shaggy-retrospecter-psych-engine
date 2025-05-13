@@ -40,6 +40,7 @@ class HealthIcon extends FlxSprite
 			animation.add('ui_shaggy', [2,3], 0, false);
 			animation.add('shaggypowerup', [2,3], 0, false);
 			animation.play(char);
+		}
 		}else{
 			loadGraphic(Paths.image('iconGrid'), true, 150, 150);
 			antialiasing=true;
