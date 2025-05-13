@@ -98,7 +98,7 @@ class GodEaterBG extends BaseStage
 				rock.antialiasing = true;
 				add(rock);
 	}
-	public function godIntro() // STOLEN STRAIGHT FROM https://github.com/GithubSPerez/the-shaggy-mod/blob/main/source/PlayState.hx
+	function godIntro() // STOLEN STRAIGHT FROM https://github.com/GithubSPerez/the-shaggy-mod/blob/main/source/PlayState.hx
 	{
 		dad.playAnim('back', true);
 		new FlxTimer().start(3, function(tmr:FlxTimer)
@@ -171,7 +171,7 @@ class GodEaterBG extends BaseStage
 	// https://github.com/Quaver/Quaver
 	var sShake:Float = 0;
 
-	public function update(elapsed:Float)
+	function update(elapsed:Float)
 	{
 		#if !debug
 		perfectMode = false;
