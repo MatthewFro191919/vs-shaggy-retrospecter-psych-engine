@@ -31,5 +31,5 @@ echo This might take a few moments depending on your internet speed.
           haxelib git faxe https://github.com/uhrobots/faxe
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib install hxcpp-debug-server
-          haxelib git SScript https://github.com/TheWorldMachinima/SScript.git
+          haxelib git SScript https://github.com/AltronMaxX/SScript.git
 echo Finished!
