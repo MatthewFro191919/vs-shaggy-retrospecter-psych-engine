@@ -19,6 +19,7 @@ echo This might take a few moments depending on your internet speed.
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec 2.5.1
+          haxelib git SScript https://github.com/TheWorldMachinima/SScript.git
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib install hscript
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
