@@ -171,7 +171,7 @@ class GodEaterBG extends BaseStage
 	// https://github.com/Quaver/Quaver
 	var sShake:Float = 0;
 
-	override public function update(elapsed:Float)
+	public function update(elapsed:Float)
 	{
 		#if !debug
 		perfectMode = false;
