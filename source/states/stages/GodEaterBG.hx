@@ -9,6 +9,9 @@ class GodEaterBG extends BaseStage
 
 	override function create()
 	{
+		Cache.Clear();
+		modchart = new ModChart(this);
+
 		switch (SONG.song.toLowerCase())
 		{
 			case 'god-eater':
@@ -161,10 +164,6 @@ class GodEaterBG extends BaseStage
 
 	var gf_launched:Bool = false;
 	public static var skipIntro=false;
-	override public function create()
-	{
-		Cache.Clear();
-		modchart = new ModChart(this);
   }	// ADAPTED FROM QUAVER!!!
 	// COOL GUYS FOR OPEN SOURCING
 	// https://github.com/Quaver/Quaver
