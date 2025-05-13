@@ -19,7 +19,7 @@ echo This might take a few moments depending on your internet speed.
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec 2.5.1
-          haxelib git SScript https://github.com/TheWorldMachinima/SScript.git
+          haxelib git SScript https://github.com/AltronMaxX/SScript.git
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib install hscript
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
@@ -28,6 +28,6 @@ echo This might take a few moments depending on your internet speed.
           haxelib git faxe https://github.com/uhrobots/faxe
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib install hxcpp-debug-server
-          haxelib git SScript https://github.com/TheWorldMachinima/SScript.git
+          haxelib git SScript https://github.com/AltronMaxX/SScript.git
 echo Finished!
 pause
