@@ -53,8 +53,6 @@ class RainEffect
   public function new(){
     shader.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
     shader.iTime.value = [0];
-    var noise = Assets.getBitmapData(Paths.image("noise"));
-    shader.iChannel0.input = noise;
     shader.iChannel0.wrap = REPEAT;
   }
   public function update(elapsed:Float){
@@ -75,8 +73,6 @@ class VCRDistortionEffect
     shader.vignetteMoving.value = [true];
     shader.glitchModifier.value = [1];
     shader.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
-    var noise = Assets.getBitmapData(Paths.image("noise2"));
-    shader.noiseTex.input = noise;
   }
 
   public function update(elapsed:Float){
