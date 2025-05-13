@@ -30,5 +30,6 @@ echo This might take a few moments depending on your internet speed.
           haxelib install hxcpp-debug-server
           haxelib git hxdiscord_rpc https://github.com/MAJigsaw77/hxdiscord_rpc.git
           haxelib git SScript https://github.com/AltronMaxX/SScript.git
+          haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate
 echo Finished!
 pause
