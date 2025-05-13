@@ -4,8 +4,12 @@ import states.stages.objects.*;
 
 class GodEaterBG extends BaseStage
 {
-	// If you're moving your stage from PlayState to a stage file,
-	// you might have to rename some variables if they're missing, for example: camZooming -> game.camZooming
+	var godCutEnd:Bool = false;
+	var godMoveBf:Bool = true;
+	var godMoveGf:Bool = false;
+	var godMoveSh:Bool = false;
+
+	public var modchart:ModChart;
 
 	override function create()
 	{
