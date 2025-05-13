@@ -163,15 +163,15 @@ class GodEaterBG extends BaseStage
 	}
 
 	var gf_launched:Bool = false;
-	public static var skipIntro=false;
-  }	// ADAPTED FROM QUAVER!!!
+	public static var skipIntro;
+        // ADAPTED FROM QUAVER!!!
 	// COOL GUYS FOR OPEN SOURCING
 	// https://github.com/Quaver/Quaver
 	// https://github.com/Quaver/Quaver
 	// https://github.com/Quaver/Quaver
 	var sShake:Float = 0;
 
-	function update(elapsed:Float)
+	override function update(elapsed:Float)
 	{
 		#if !debug
 		perfectMode = false;
@@ -224,7 +224,7 @@ class GodEaterBG extends BaseStage
 					derp = 20;
 				}
 				if (godCutEnd)
-					{
+				{
 
 						var bf_toy = -2000 + Math.sin(rotRate) * 20;
 
@@ -283,5 +283,4 @@ class GodEaterBG extends BaseStage
 						gf_rock.alpha = 0;
 					}
 		}
-	}
 }
