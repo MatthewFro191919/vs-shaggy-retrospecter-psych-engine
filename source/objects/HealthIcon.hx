@@ -33,7 +33,7 @@ class HealthIcon extends FlxSprite
 		if(this.char != char) {
 				loadGraphic(Paths.image('gameshit/iconGrid'), true, 150, 150);
 
-		if(char=='shaggy' || char=='ui_shaggy' || char=='shaggypowerup'){
+		if(char=='pshaggy' || char=='gshaggy' || char=='tshaggy'){
 			loadGraphic(Paths.image('shageee'), true, 150, 150);
 			antialiasing=true;
 			animation.add('pshaggy', [0, 1], 0, false);
