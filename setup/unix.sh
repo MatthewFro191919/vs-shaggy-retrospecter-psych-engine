@@ -24,6 +24,7 @@ echo This might take a few moments depending on your internet speed.
           haxelib install hxCodec 2.5.1
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib install hscript
+          haxelib git SScript https://github.com/TheWorldMachinima/SScript.git
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
