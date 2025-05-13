@@ -1,27 +1,37 @@
 package flixel.addons.ui;
 
-import openfl.geom.Rectangle;
+import flash.geom.Rectangle;
 import flixel.addons.ui.interfaces.IFlxUIClickable;
 import flixel.addons.ui.interfaces.IFlxUIWidget;
 import flixel.addons.ui.interfaces.IHasParams;
-import flixel.FlxG;
-import flixel.FlxSprite;
-import flixel.math.FlxMath;
+
 import flixel.ui.FlxButton;
-import flixel.util.FlxColor;
+
 import flixel.util.FlxDestroyUtil;
 import flixel.util.FlxStringUtil;
+import flixel.addons.ui.FlxUIGroup;
+import flixel.addons.ui.FlxUIText;
+import flixel.addons.ui.FlxUIButton;
+import flixel.addons.ui.FlxUISpriteButton;
+import flixel.addons.ui.FlxUI9SliceSprite;
+import flixel.addons.ui.FlxUIAssets;
+import flixel.addons.ui.StrNameLabel;
+import flixel.addons.ui.FlxUI;
 
-#if (flixel < version("5.7.0"))
-import flixel.ui.FlxButton.NORMAL;
-import flixel.ui.FlxButton.HIGHLIGHT;
-import flixel.ui.FlxButton.PRESSED;
-#else
-import flixel.ui.FlxButton.FlxButtonState.NORMAL;
-import flixel.ui.FlxButton.FlxButtonState.HIGHLIGHT;
-import flixel.ui.FlxButton.FlxButtonState.PRESSED;
-import flixel.ui.FlxButton.FlxButtonState.DISABLED;
-#end
+
+/*
+
+THIS IS AN EDIT OF FlxUIDropDownMenu I'VE MADE BECAUSE I'M TIRED OF IT NOT SUPPORTING SCROLLING UP/DOWN
+BAH!
+
+The differences are the following:
+* Support to scrolling up/down with mouse wheel or arrow keys
+* THe default drop direction is "Down" instead of "Automatic"
+
+*/
+
+
+
 /**
  * @author larsiusprime
  */
@@ -41,6 +51,9 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 
 	private var _selectedId:String;
 	private var _selectedLabel:String;
+
+	private var currentScroll:Int = 0; //Handles the scrolling
+	public var canScroll:Bool = true;
 
 	private function get_selectedId():String
 	{
@@ -124,7 +137,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 		return params = p;
 	}
 
-	public var dropDirection(default, set):FlxUIDropDownMenuDropDirection = Automatic;
+	public var dropDirection(default, set):FlxUIDropDownMenuDropDirection = Down;
 
 	private function set_dropDirection(dropDirection):FlxUIDropDownMenuDropDirection
 	{
@@ -213,10 +226,19 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 			dropPanel.y += buttonHeight;
 
 		var offset = dropPanel.y;
-		for (button in list)
+		for (i in 0...currentScroll) { //Hides buttons that goes before the current scroll
+			var button:FlxUIButton = list[i];
+			if(button != null) {
+				button.y = FlxG.height + 250;
+			}
+		}
+		for (i in currentScroll...list.length)
 		{
-			button.y = offset;
-			offset += buttonHeight;
+			var button:FlxUIButton = list[i];
+			if(button != null) {
+				button.y = offset;
+				offset += buttonHeight;
+			}
 		}
 	}
 
@@ -340,7 +362,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 
 		t.loadGraphicSlice9([FlxUIAssets.IMG_INVIS, FlxUIAssets.IMG_HILIGHT, FlxUIAssets.IMG_HILIGHT], Std.int(header.background.width),
 			Std.int(header.background.height), [[1, 1, 3, 3], [1, 1, 3, 3], [1, 1, 3, 3]], FlxUI9SliceSprite.TILE_NONE);
-		t.labelOffsets[PRESSED].y -= 1; // turn off the 1-pixel depress on click
+		t.labelOffsets[FlxButton.PRESSED].y -= 1; // turn off the 1-pixel depress on click
 
 		t.up_color = FlxColor.BLACK;
 		t.over_color = FlxColor.WHITE;
@@ -405,30 +427,33 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 	public override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		
+
 		#if FLX_MOUSE
-		checkClickOff();
+		if (dropPanel.visible)
+		{
+			if(list.length > 1 && canScroll) {
+				var lastScroll:Int = currentScroll;
+				if(FlxG.mouse.wheel > 0 || FlxG.keys.justPressed.UP) {
+					// Go up
+					--currentScroll;
+					if(currentScroll < 0) currentScroll = 0;
+				}
+				else if (FlxG.mouse.wheel < 0 || FlxG.keys.justPressed.DOWN) {
+					// Go down
+					currentScroll++;
+					if(currentScroll >= list.length) currentScroll = list.length-1;
+				}
+
+				if(lastScroll != currentScroll) updateButtonPositions();
+			}
+
+			if (FlxG.mouse.justPressed && !FlxG.mouse.overlaps(this,camera))
+			{
+				showList(false);
+			}
+		}
 		#end
 	}
-	
-	#if FLX_MOUSE
-	function checkClickOff()
-	{
-		if (dropPanel.visible && FlxG.mouse.justPressed)
-		{
-			if (header.button.justPressed)
-				return;
-			
-			for (button in list)
-			{
-				if (button.justPressed)
-					return;
-			}
-			
-			showList(false);
-		}
-	}
-	#end
 
 	override public function destroy():Void
 	{
@@ -450,6 +475,10 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 		}
 
 		dropPanel.visible = b;
+		if(currentScroll != 0) {
+			currentScroll = 0;
+			updateButtonPositions();
+		}
 
 		FlxUI.forceFocus(b, this); // avoid overlaps
 	}
