@@ -36,9 +36,9 @@ class HealthIcon extends FlxSprite
 		if(char=='shaggy' || char=='ui_shaggy' || char=='shaggypowerup'){
 			loadGraphic(Paths.image('shageee'), true, 150, 150);
 			antialiasing=true;
-			animation.add('shaggy', [0, 1], 0, false);
-			animation.add('ui_shaggy', [2,3], 0, false);
-			animation.add('shaggypowerup', [2,3], 0, false);
+			animation.add('pshaggy', [0, 1], 0, false);
+			animation.add('gshaggy', [2,3], 0, false);
+			animation.add('tshaggy', [2,3], 0, false);
 			animation.play(char);
 		}
 		}else{
